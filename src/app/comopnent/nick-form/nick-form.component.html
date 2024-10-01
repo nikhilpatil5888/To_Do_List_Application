@@ -1,0 +1,112 @@
+<div class="slds-modal slds-fade-in-open">
+  <div class="slds-modal__container">
+    <!-- Close icon -->
+    <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" (click)="cancelForm()">
+      <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+      </svg>
+      <span class="slds-assistive-text">Close</span>
+    </button> -->
+
+    <div class="slds-modal__header">
+      <h2 class="slds-text-heading_medium">{{ user ? 'Edit Task' : 'Add New Task' }}</h2>
+    </div>
+
+    <div class="slds-modal__content slds-p-around_medium">
+      <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="slds-form">
+        <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-2 slds-p-right_small">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="name">
+                <span class="slds-required">*</span> Assigned To
+              </label>
+              <div class="slds-form-element__control">
+                <select name="name" [ngModel]="user?.name" required #name="ngModel" class="slds-select">
+                  <option *ngFor="let u of users" [value]="u">{{ u }}</option>
+                </select>
+              </div>
+              <!-- Validation message for Assigned To -->
+              <div *ngIf="name.invalid && name.touched" class="slds-form-element__help">
+                Assigned To is required
+              </div>
+            </div>
+          </div>
+
+          <div class="slds-col slds-size_1-of-2 slds-p-left_small">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="status">
+                <span class="slds-required">*</span> Status
+              </label>
+              <div class="slds-form-element__control">
+                <select name="status" [ngModel]="user?.status" required #status="ngModel" class="slds-select">
+                  <option value="Not Started">Not Started</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+              <!-- Validation message for Status -->
+              <div *ngIf="status.invalid && status.touched" class="slds-form-element__help">
+                Status is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slds-grid slds-wrap slds-m-top_medium">
+          <div class="slds-col slds-size_1-of-2 slds-p-right_small">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="dueDate">
+                <span class="slds-required">*</span> Due Date
+              </label>
+              <div class="slds-form-element__control">
+                <input type="date" name="dueDate" [ngModel]="user?.dueDate" required #dueDate="ngModel" class="slds-input" />
+              </div>
+              <!-- Validation message for Due Date -->
+              <div *ngIf="dueDate.invalid && dueDate.touched" class="slds-form-element__help">
+                Due Date is required
+              </div>
+            </div>
+          </div>
+
+          <div class="slds-col slds-size_1-of-2 slds-p-left_small">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="priority">
+                <span class="slds-required">*</span> Priority
+              </label>
+              <div class="slds-form-element__control">
+                <select name="priority" [ngModel]="user?.priority" required #priority="ngModel" class="slds-select">
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              <!-- Validation message for Priority -->
+              <div *ngIf="priority.invalid && priority.touched" class="slds-form-element__help">
+                Priority is required
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="slds-form-element slds-m-top_medium">
+          <label class="slds-form-element__label" for="description">Description</label>
+          <div class="slds-form-element__control">
+            <textarea name="description" [ngModel]="user?.description" rows="4" class="slds-textarea"></textarea>
+          </div>
+        </div>
+
+        <div class="slds-modal__footer">
+          <button type="submit" class="slds-button slds-button_brand" [disabled]="userForm.invalid">
+            {{ user ? 'Update Task' : 'Add Task' }}
+          </button>
+          <button type="button" class="slds-button slds-button_neutral" (click)="cancelForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Backdrop -->
+  <div class="slds-backdrop slds-backdrop_open"></div>
+
+  
+</div>

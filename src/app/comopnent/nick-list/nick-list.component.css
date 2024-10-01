@@ -1,0 +1,251 @@
+/* user-list.component.css */
+
+.container {
+    max-width: 800px; /* Set a max width for the container */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add padding */
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ccc; /* Border around the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.button-container, .search-container, .pagination {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    margin-bottom: 20px; /* Space between elements */
+}
+
+table {
+    width: 100%; /* Make the table full width */
+    border-collapse: collapse; /* Remove gaps between cells */
+}
+
+th, td {
+    border: 1px solid #ccc; /* Add borders to table cells */
+    padding: 8px; /* Add padding for spacing */
+    text-align: center; /* Align text to the left */
+}
+
+th {
+    /*background-color: #f2f2f2;  Light gray background for header */
+    border-left: none; /* Remove left border for header */
+    border-right: none; /* Remove right border for header */
+}
+
+td {
+    border-left: none; /* Remove left border */
+    border-right: none; /* Remove right border */
+}
+
+form {
+    position: fixed; /* Make the form fixed to overlay */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9); /* White background with opacity */
+    z-index: 1000; /* Ensure it's above other elements */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the form */
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Shadow for the form */
+}
+
+form input, form select {
+    margin: 10px 0; /* Spacing for inputs */
+    width: 100%; /* Make inputs full width */
+    max-width: 300px; /* Set a max width */
+}
+
+/* Add to your user-list.component.css */
+
+.overlay {
+    position: fixed; /* Cover the entire viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    z-index: 999; /* Ensure it sits above other content */
+}
+
+.page-title {
+    margin-right: auto; /* Allows the heading to take the available space */
+    font-size: 24px; /* Font size for the heading */
+    color: #333; /* Text color */
+    align-self: center; /* Center align vertically with buttons */
+}
+
+
+.button-container {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center align items vertically */
+}
+
+.button-container button {
+    width: 80px; /* Set a fixed width for the buttons */
+    height: 36px; /* Set a fixed height for the buttons */
+    padding: 0; /* Remove padding for a rectangular shape */
+    margin: 0; /* No margin between buttons */
+    font-size: 14px; /* Adjust font size for smaller buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 0; /* Slightly rounded corners */
+    background-color: #f0f0f0; /* Background color */
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+}
+
+.button-container button:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+}
+
+.page-title i {
+    margin-right: 8px; /* Add space between icon and text */
+}
+
+.pagination {
+    display: flex; 
+    justify-content: flex-end; /* Aligns buttons to the right */
+    margin-top: 20px; /* Adds space above the pagination */
+}
+
+.pagination button {
+    width: 70px; /* Smaller width for the buttons */
+    height: 30px; /* Smaller height for the buttons */
+    margin-left: 0; /* Remove margin to keep buttons joined */
+    padding: 0; /* Remove extra padding */
+    font-size: 12px; /* Slightly smaller font size */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Slight rounding for buttons */
+    background-color: #f0f0f0; /* Button background color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.2s; /* Smooth hover transition */
+}
+
+.pagination button:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+}
+
+.dropdown {
+    position: relative; /* Needed for positioning the dropdown content */
+    display: inline-block; /* Keeps the dropdown in line with other content */
+}
+
+.dropdown-button {
+    background-color: #f0f0f0; /* Background color for button */
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 4px; /* Square corners */
+    padding: 8px 12px; /* Padding inside button */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 14px; /* Font size */
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+}
+
+.dropdown-button:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+}
+
+.dropdown-content {
+    display: none; /* Hide the dropdown content */
+    position: absolute; /* Position relative to the button */
+    background-color: #f9f9f9; /* Background for dropdown */
+    min-width: 160px; /* Minimum width for dropdown */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Shadow for dropdown */
+    z-index: 1; /* Ensure it sits above other content */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown content on hover */
+}
+
+.dropdown-content button {
+    background: none; /* Transparent background for dropdown buttons */
+    border: none; /* No border */
+    padding: 8px 12px; /* Padding for dropdown buttons */
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Make dropdown buttons full width */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.dropdown-content button:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+}
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: -20px; /* Space below the buttons */
+  }
+  
+  .search-container {
+    margin-top: 10px; /* Space above the search bar */
+    text-align: left; /* Align text to the left */
+  }
+  
+  .search-wrapper {
+    position: relative; /* Relative positioning for absolute children */
+    width: 200px; /* Set width as needed */
+  }
+  
+  input[type="text"] {
+    padding: 10px 30px; /* Padding for top, bottom, and right */
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Include padding in width */
+  }
+  
+  .search-icon {
+    position: absolute;
+    right: 10px; /* Position the icon inside the field */
+    top: 50%; /* Center the icon vertically */
+    transform: translateY(-50%); /* Adjust for perfect vertical alignment */
+    font-size: 18px; /* Adjust icon size */
+    color: #888; /* Change color as needed */
+    pointer-events: none; /* Prevent clicking on the icon */
+  }
+  
+  .button-container button {
+    padding: 10px; /* Padding to match the search input */
+    width: 100px; /* Set a fixed width (adjust as needed) */
+    margin-right: 10px; /* Space between buttons */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #e1ee70; /* Button background color */
+    color: rgb(33, 41, 118); /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .button-container button:hover {
+    background-color: #768493; /* Darker shade on hover */
+  }
+
+  .button-group {
+    display: flex; /* Use Flexbox to arrange buttons */
+  }
+  
+  .button-group button {
+    margin: 0; /* Remove margin */
+    border-radius: 0; /* Removes rounded corners */
+  }
+  
+  .button-group button:first-child {
+    border-right: none; /* Optional: Remove right border of the first button */
+  }

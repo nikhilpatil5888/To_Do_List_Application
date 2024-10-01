@@ -1,0 +1,108 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it overlays above other content */
+    backdrop-filter: blur(5px); /* Blur background */
+  }
+  
+  .user-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Adjust width as needed */
+    position: relative; /* For positioning the close icon */
+  }
+  
+  .form-control {
+    width: 100%; /* Make all inputs and selects take full width */
+    padding: 8px; /* Add padding for a rectangular shape */
+    border: 1px solid #ccc; /* Border for rectangle */
+    border-radius: 4px; /* Subtle rounding, remove this if you want sharp corners */
+    box-sizing: border-box; /* Ensures padding is included in the width */
+  }
+  
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between; /* Aligns items evenly in the row */
+    gap: 20px; /* Adds space between form groups in the row */
+  }
+  
+  .form-group {
+    flex: 1; /* Ensures each group takes equal space */
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  textarea {
+    width: 100%;
+    resize: none; /* Optional: to prevent manual resizing of the text area */
+  }
+  
+  .form-group:last-child {
+    margin-right: 0; /* Remove margin for the last item */
+  }
+  
+  
+  button {
+    margin-top: 10px; /* Space above the button */
+  }
+  
+  .close {
+    position: absolute; /* Positioning it relative to the user-form */
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    font-size: 24px; /* Adjust size as needed */
+    color: #888; /* Adjust color as needed */
+  }
+  
+  .close:hover {
+    color: #f00; /* Change color on hover */
+    cursor: pointer; /* Show pointer cursor */
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between; /* Space out the buttons */
+    margin-top: 15px; /* Space above the button container */
+  }
+  
+  button {
+    padding: 10px 15px; /* Add some padding for buttons */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50; /* Green background for the submit button */
+    color: white; /* White text */
+  }
+  
+  button[type="button"] {
+    background-color: #f44336; /* Red background for the cancel button */
+    color: white; /* White text */
+  }
+  
+  .required-star {
+    color: red;
+    margin-right: 1px; /* Reduce the gap */
+    font-size: 1.2em; /* Optional: Adjust the size of the star if needed */
+  }
+  

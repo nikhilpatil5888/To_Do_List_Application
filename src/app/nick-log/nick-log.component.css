@@ -1,0 +1,72 @@
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dialog {
+    background: white;
+    padding: 0; /* Remove padding from the dialog to allow the red to touch the border */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Fixed width for consistency */
+    max-width: 90%; /* Responsive width */
+  }
+  
+  .heading-compartment {
+    background-color: red; /* Red background for the heading */
+    padding: 20px; /* Padding around the heading */
+    margin: 0; /* Ensure no margin to touch the borders */
+    color: white; /* White text color */
+  }
+  
+  .confirmation-compartment {
+    padding: 20px; /* Increased padding around the confirmation text */
+    position: relative; /* For positioning the button container */
+    border-top: 2px solid #fff; /* Optional: add a border line between sections */
+  }
+  
+  .button-container {
+    display: flex; /* Use flexbox to align buttons */
+    justify-content: flex-end; /* Align buttons to the right */
+    margin-top: 20px; /* Space between confirmation text and buttons */
+  }
+  
+  .dialog button {
+    background-color: #c0ce55; /* Blue background */
+    color: rgb(237, 237, 251);              /* White text */
+    border: none;              /* No border */
+    padding: 10px 20px;       /* Padding around the text */
+    margin-left: 5px;         /* Space between buttons */
+    border-radius: 5px;       /* Rounded corners */
+    cursor: pointer;           /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+  }
+  
+  .dialog button:hover {
+    background-color: #1b2d44; /* Darker blue on hover */
+  }
+  
+  .confirm-button {
+    background-color: #dc3545; /* Red background for confirmation */
+  }
+  
+  .cancel-button {
+    background-color: #6c757d; /* Gray background for cancel */
+  }
+  
+  .confirm-button:hover {
+    background-color: #c82333; /* Darker red on hover */
+  }
+  
+  .cancel-button:hover {
+    background-color: #5a6268; /* Darker gray on hover */
+  }
+  

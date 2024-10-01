@@ -1,0 +1,115 @@
+<div class="slds-grid slds-wrap slds-m-around_medium">
+  <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+    <h1 class="slds-text-heading_large slds-text-color_default slds-p-bottom_small">📝 Tasks</h1>
+    <div class="slds-button-group">
+      <button class="slds-button slds-button_brand" (click)="onNewTask()">New Task</button>
+      <button class="slds-button slds-button_neutral" (click)="onRefresh()">Refresh</button>
+    </div>
+  </div>
+
+  <div class="slds-col slds-size_1-of-1 slds-p-around_small">
+    <div class="slds-form-element">
+      <div class="slds-form-element__control">
+        <div class="slds-input-has-icon slds-input-has-icon_left">
+          <span class="slds-icon_container slds-icon-utility-search">
+            <svg class="slds-icon slds-icon_small">
+              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search"></use>
+            </svg>
+          </span>
+          <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" class="slds-input" placeholder="Search" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isFormVisible" class="slds-backdrop slds-backdrop_open"></div> <!-- Backdrop for the overlay -->
+
+  <app-nick-form 
+  *ngIf="isFormVisible" 
+  [user]="editingUser" 
+  (submitNick)="editingUser ? saveUser($event) : onNewTask($event)" 
+  (cancel)="onCancel()">
+</app-nick-form>
+
+
+  <app-nick-log
+    *ngIf="showConfirmationDialog"
+    (confirm)="confirmDelete($event)"
+  ></app-nick-log>
+
+  <div class="slds-text-title slds-p-around_small">
+    {{ filteredUsers.length }} records
+  </div>
+
+  <hr class="slds-m-around_small" />
+
+  <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+    <thead>
+      <tr class="slds-text-title_caps">
+        <th scope="col"></th>
+        <th scope="col">Assigned To</th>
+        <th scope="col">Status</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Comments</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of paginatedUsers">
+        <td>
+          <input type="checkbox" (click)="toggleCompletion(user)" [checked]="user.completed" />
+        </td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.status }}</td>
+        <td>{{ user.dueDate }}</td>
+        <td>{{ user.priority }}</td>
+        <td>{{ user.description }}</td>
+        <td>
+          <div class="slds-dropdown-trigger slds-dropdown-trigger_click">
+            <!-- <button class="slds-button slds-button_icon slds-button_icon-border-filled" aria-haspopup="true"> -->
+              <!-- <svg class="slds-button__icon" aria-hidden="true"> -->
+                <!-- <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use> -->
+              <!-- </svg>
+              <span class="slds-assistive-text">Show More</span>
+            </button> -->
+            <div class="slds-dropdown slds-dropdown_right">
+              <ul class="slds-dropdown__list" role="menu">
+                <li class="slds-dropdown__item" role="presentation">
+                  <a href="javascript:void(0);" role="menuitem" (click)="onEditUser(user)">
+                    <span class="slds-truncate" title="Edit">Edit</span>
+                  </a>
+                </li>
+                <li class="slds-dropdown__item" role="presentation">
+                  <a href="javascript:void(0);" role="menuitem" (click)="onDeleteUser(user.id)">
+                    <span class="slds-truncate" title="Delete">Delete</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr class="slds-m-around_small" />
+
+  <div class="slds-grid slds-wrap slds-m-around_small">
+    <div class="slds-col slds-size_1-of-1 slds-align_absolute-center">
+      <button class="slds-button slds-button_icon slds-button_icon-border-filled" (click)="firstPage()" [disabled]="currentPage === 1">
+        🡹 First
+      </button>
+      <button class="slds-button slds-button_icon slds-button_icon-border-filled" (click)="prevPage()" [disabled]="currentPage === 1">
+        < Prev
+      </button>
+      <button class="slds-button slds-button_neutral">{{ currentPage }}</button>
+      <button class="slds-button slds-button_icon slds-button_icon-border-filled" (click)="nextPage()" [disabled]="currentPage === totalPages">
+        > Next
+      </button>
+      <button class="slds-button slds-button_icon slds-button_icon-border-filled" (click)="lastPage()" [disabled]="currentPage === totalPages">
+        🡻 Last
+      </button>
+    </div>
+  </div>
+</div>
